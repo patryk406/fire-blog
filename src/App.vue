@@ -1,15 +1,22 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
+      <Navigation />
       <router-view />
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
+import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 export default {
   name: "app",
-  components: {},
+  components: {
+    Navigation,
+    Footer,
+  },
   data() {
     return {};
   },
@@ -20,7 +27,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang='scss'>
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 * {
@@ -50,5 +57,86 @@ export default {
 
 .link-light {
   color: #fff;
+}
+.arrow {
+  margin-left: 8px;
+  width: 12px;
+  path {
+    fill: black;
+  }
+}
+.arrow-light {
+  path {
+    fill: #fff;
+  }
+}
+
+button,
+.router-button {
+  transition: 0.5s ease all;
+  cursor: pointer;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background-color: gray;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: rgb(82, 82, 82);
+  }
+}
+.button-ghost {
+  color: #000;
+  padding: 0;
+  border-radius: 0;
+  margin-top: 50px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: transparent;
+  @media (min-width: 700px) {
+    margin-top: 0;
+    margin-left: auto;
+  }
+  i {
+    margin-left: 8px;
+  }
+}
+.button-light {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+.button-inactive {
+  pointer-events: none !important;
+  cursor: none !important;
+  background-color: rgba(145, 145, 145, 0.521) !important;
+}
+.blog-card-wrap {
+  position: relative;
+  padding: 80px 16px;
+  background-color: #fff;
+  @media (min-width: 500px) {
+    padding: 100px 16px;
+  }
+  .blog-cards {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr;
+    @media (min-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 }
 </style>
